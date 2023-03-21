@@ -9,7 +9,7 @@ const VistaCategoria = () => {
 
 	return (
 		<div id="vistaCategoria">
-			<h3 className="titulo">Categoria: {categoria.name}</h3>
+			<h3 className="titulo">Categoría: {categoria.name}</h3>
 			<ListadoItems categoria={categoria} />
 		</div>
 	);

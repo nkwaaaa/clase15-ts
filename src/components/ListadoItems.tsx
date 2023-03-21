@@ -3,6 +3,8 @@ import { Category } from "../interfaces";
 import { getItemCategory } from "../queries/items.queries";
 import { extractCategoriaId } from "./ListadoCategoriasItem";
 
+import ItemView from "./ItemView";
+
 const ListadoItems = ({ categoria }: { categoria: Category }): JSX.Element => {
 	// era menos mersa crear una interface?
 	const idCategoria = extractCategoriaId(categoria.url);
@@ -14,14 +16,14 @@ const ListadoItems = ({ categoria }: { categoria: Category }): JSX.Element => {
 	if (isLoading) return <div>Cargando items...</div>;
 	if (isError) return <div>No se pudo cargar los items...</div>;
 
-	return data ? (
-		<div>
-			<h4>Items</h4>
+	//console.log(data);
 
-			{data.items.map((item) => (
-				<div key={item.name}>{item.name}</div>
+	return data ? (
+		<>
+			{data.items.map((item, index) => (
+				<ItemView key={index} item={item} />
 			))}
-		</div>
+		</>
 	) : (
 		<></>
 		// esto también está medio flojo de papeles?
